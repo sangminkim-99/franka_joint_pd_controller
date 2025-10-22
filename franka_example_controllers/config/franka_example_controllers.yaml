@@ -21,6 +21,26 @@ joint_position_example_controller:
         - $(arg arm_id)_joint6
         - $(arg arm_id)_joint7
 
+joint_effort_pd_example_controller:
+    type: franka_example_controllers/JointEffortPDController
+    joint_names:
+        - $(arg arm_id)_joint1
+        - $(arg arm_id)_joint2
+        - $(arg arm_id)_joint3
+        - $(arg arm_id)_joint4
+        - $(arg arm_id)_joint5
+        - $(arg arm_id)_joint6
+        - $(arg arm_id)_joint7
+    # --- GAINS (MUST BE TUNED) ---
+    
+    # Proportional (Kp) gains (Stiffness)
+    # Example values (tune carefully!):
+    kp_gains: [600.0, 600.0, 600.0, 600.0, 250.0, 150.0, 50.0]
+    
+    # Derivative (Kd) gains (Damping)
+    # Example values (tune carefully!):
+    kd_gains: [ 50.0,  50.0,  50.0, 20.0, 20.0,  20.0, 10.0]
+
 cartesian_pose_example_controller:
     type: franka_example_controllers/CartesianPoseExampleController
     arm_id: $(arg arm_id)
